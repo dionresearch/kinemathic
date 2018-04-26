@@ -25,14 +25,18 @@ def update_figure(df1, n, autoscale=False, ax=None, axis=0, grayed=None, j=0, ki
     :param title: optional, title for the plot
     :return: affects ax
     """
-    if j%2:
+    if j % 2:
         c0 = 'C0'
         c1 = 'C1'
     else:
         c0 = 'C1'
         c1 = 'C0'
-    if kind == None:
-        kind='line'
+    if kind is None:
+        kind = 'line'
+
+    # Just to quiet pep8 warning. 0.3 uses start, so might as well document it
+    if start == 0:
+        pass
     items = df1.shape[0]
     ax.cla()
     if title is not None:
@@ -44,7 +48,7 @@ def update_figure(df1, n, autoscale=False, ax=None, axis=0, grayed=None, j=0, ki
     if axis:
         if not autoscale:
             df1.iloc[items - 1:items, ].plot(ax=ax, color=c0)
-        df1.iloc[:n,].plot(ax=ax, color=c0, kind=kind)
+        df1.iloc[:n, ].plot(ax=ax, color=c0, kind=kind)
     else:
         df1.iloc[0].plot(ax=ax, color=c0, alpha=0.25, kind=kind)
         df1.iloc[items - 1].plot(ax=ax, color=c1, alpha=0.25, kind=kind)
@@ -87,8 +91,8 @@ def ianimate(df, autoscale=True, ax=None, axis=0, filename=None, fps=5, kind=Non
     else:
         fig = ax.get_fig()
 
-    if filename==None:
-        filename='tmp.mp4'
+    if filename is None:
+        filename = 'tmp.mp4'
     if n is None:
         n = df.shape[0]
     moviewriter = FFMpegWriter(fps=fps)

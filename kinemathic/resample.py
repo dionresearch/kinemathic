@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def between_rows(df, n = 10, skip_objects=True):
+def between_rows(df, n=10, skip_objects=True):
     """ between_rows.
 
     Create new rows between existing rows.
@@ -34,14 +34,14 @@ def between_rows(df, n = 10, skip_objects=True):
             val = df[col].values[0]
             col_data.append(val)
             for i in range(transitions):
-                between='{}-{:2}'.format(val,i)
+                between = '{}-{:2}'.format(val, i)
                 col_data.append(between)
             val = df[col].values[1]
             col_data.append(val)
             new_df.append(col_data)
             new_cols.append(col)
     dft = pd.DataFrame(new_df)
-    new_cols_dict = {i: col for i,col in enumerate(new_cols)}
+    new_cols_dict = {i: col for i, col in enumerate(new_cols)}
     return dft.T.rename(columns=new_cols_dict)
 
 
