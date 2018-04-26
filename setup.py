@@ -16,7 +16,7 @@ setup(name='kinemathic',
           "docopt",
           "matplotlib",
           "pandas",
-          "seaborn"
+          "IPython"
       ],
       include_package_data=True,
       scripts=['bin/kine','bin/kine.bat'],
